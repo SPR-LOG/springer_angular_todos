@@ -32,7 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       TAG_DYNAMIC: ${{ github.ref_name }}-${{ github.run_id }}
-      IMAGE_NAME: ngulartodos_app
+      IMAGE_NAME: ${{ secrets.DOCKER_HUB_USERNAME}}/angular_todos_app
       
     steps:
       - uses: actions/checkout@v4
