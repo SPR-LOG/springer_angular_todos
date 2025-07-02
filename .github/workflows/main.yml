@@ -34,8 +34,7 @@ jobs:
       TAG_DYNAMIC: ${{ github.ref_name }}-${{ github.run_id }}
       
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         
       - name: Build docker image
         run: |
@@ -44,5 +43,5 @@ jobs:
           --tag angulartodos_app:$TAG_DYNAMIC \
           --tag tag angulartodos_app:latest
 
-      - name: wohin
+      #- name: wohin
       
