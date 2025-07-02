@@ -15,20 +15,20 @@ jobs:
       #- name: Run prettier check
       #  run: npm run check
 
-  test:
-    runs-on: ubuntu-latest
-    needs: quality-check
-    steps:
+  #test:
+   # runs-on: ubuntu-latest
+   # needs: quality-check
+   # steps:
 
-      - uses: actions/checkout@v4
+    # - uses: actions/checkout@v4
 
-      - name: NPM CI
-        run: npm install
+     # - name: NPM CI
+      # run: npm install
       
       #- run: npm test
 
   build-container:
-    needs: test
+    needs: quality-check
     runs-on: ubuntu-latest
     env:
       TAG_DYNAMIC: ${{ github.ref_name }}-${{ github.run_id }}
@@ -43,6 +43,11 @@ jobs:
           --file Dockerfile \
           --tag $IMAGE_NAME:$TAG_DYNAMIC \
           --tag $IMAGE_NAME:latest
+      - name: Loggin to docker hub
+        uses: docker/login-action@v3
+        with: 
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
 
       - name: Push image to docker hub
         run: |
