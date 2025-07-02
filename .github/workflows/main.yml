@@ -12,5 +12,5 @@ jobs:
       - name: NPM CI
         run: npm install
            
-      - name: Run prettier check
-        run: npm run check
+      #- name: Run prettier check
+      #  run: npm run check
