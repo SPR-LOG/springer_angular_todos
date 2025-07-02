@@ -41,7 +41,7 @@ jobs:
           docker build . \
           --file Dockerfile \
           --tag angulartodos_app:$TAG_DYNAMIC \
-          --tag tag angulartodos_app:latest
+          --tag angulartodos_app:latest
 
       #- name: wohin
       
