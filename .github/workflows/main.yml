@@ -6,11 +6,11 @@ jobs:
   quality-check:
     runs-on: ubuntu-latest
     steps:
-      - name: NPM CI
-        run: npm i
-        
       - name: Checkout code
         uses: actions/checkout@v4
-
+        
+      - name: NPM CI
+        run: npm i
+           
       - name: Run prettier check
         run: npm run check
