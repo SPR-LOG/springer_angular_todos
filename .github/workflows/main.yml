@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: NPM CI
-        run: npm ci
+        run: npm i
         
       - name: Checkout code
         uses: actions/checkout@v4
