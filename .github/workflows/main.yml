@@ -26,4 +26,23 @@ jobs:
         run: npm install
       
       - run: npm test
+
+  build-container:
+    needs: quality-check
+    runs-on: ubuntu-latest
+    env:
+      TAG_DYNAMIC: ${{ github.ref_name }}-${{ github.run_id }}
+      
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Build docker image
+        run: |
+          docker build . \
+          --file Dockerfile \
+          --tag angulartodos_app:$TAG_DYNAMIC \
+          --tag tag angulartodos_app:latest
+
+      - name: wohin
       
