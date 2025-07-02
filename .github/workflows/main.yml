@@ -28,7 +28,7 @@ jobs:
       #- run: npm test
 
   build-container:
-    needs: test
+    needs: quality-check
     runs-on: ubuntu-latest
     env:
       TAG_DYNAMIC: ${{ github.ref_name }}-${{ github.run_id }}
